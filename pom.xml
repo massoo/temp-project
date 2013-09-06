@@ -16,6 +16,7 @@
 	</properties>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -26,8 +27,14 @@
             <artifactId>commons-dbutils</artifactId>
             <version>1.5</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.2</version>
+        </dependency>
 
-		<dependency>
+
+        <dependency>
 			<groupId>org.owasp</groupId>
 			<artifactId>csrfguard</artifactId>
 			<version>3.0.0</version>
@@ -101,7 +108,7 @@
 		<dependency>
 			<groupId>org.owasp.esapi</groupId>
 			<artifactId>esapi</artifactId>
-			<version>2.0.1</version>
+			<version>2.1.0</version>
 			<exclusions>
 				<exclusion>
 					<groupId>xerces</groupId>
@@ -118,6 +125,26 @@
 			<version>2.11.0</version>
 		</dependency>
 
+        <!-- Servlet API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>3.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>el-impl</artifactId>
+            <version>2.2</version>
+            <scope>provided</scope>
+        </dependency>
+
 
 		<!-- BEGIN: Log4j configuration - we cannot use logback because of esapi
 			:( -->
@@ -133,63 +160,6 @@
 		</dependency>
 		<!-- END: Log4j configuration -->
 
-
-		<!-- JSTL -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-
-		<!-- Apache Tiles -->
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-core</artifactId>
-			<version>3.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-jsp</artifactId>
-			<version>3.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-api</artifactId>
-			<version>3.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-request-api</artifactId>
-			<version>1.0.3</version>
-		</dependency>
-
-
-		<!-- servlet api only for compilation -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>javax.el-api</artifactId>
-			<version>3.0.0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.web</groupId>
-			<artifactId>el-impl</artifactId>
-			<version>2.2</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Safe integer/long operations -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-math3</artifactId>
-			<version>3.2</version>
-		</dependency>
 
 
 		<!-- JSR 303 reference implementation -->
@@ -212,8 +182,6 @@
 			<version>1.3</version>
 		</dependency>
 
-
-
 	</dependencies>
 
 	<build>
@@ -227,38 +195,6 @@
 					<tempWebappDirectory>${basedir}/target/site/tempdir</tempWebappDirectory>
 				</configuration>
 			</plugin>
-
-			<!-- deploy to the tomcat web-apps directory -->
-			<!--<plugin> -->
-			<!--<artifactId>maven-antrun-plugin</artifactId> -->
-			<!--<version>1.7</version> -->
-			<!--<executions> -->
-			<!--<execution> -->
-			<!--<phase>package</phase> -->
-			<!--<goals> -->
-			<!--<goal>run</goal> -->
-			<!--</goals> -->
-			<!--<configuration> -->
-			<!--<target> -->
-			<!--<echo>deleting ${tomcat.location}/${project.artifactId}</echo> -->
-			<!--<delete includeEmptyDirs="true"> -->
-			<!--<fileset dir="${tomcat.location}" includes="${project.artifactId}/**" 
-				/> -->
-			<!--</delete> -->
-			<!--</target> -->
-			<!--</configuration> -->
-			<!--</execution> -->
-			<!--</executions> -->
-			<!--</plugin> -->
-			<!--<plugin> -->
-			<!--<groupId>org.apache.maven.plugins</groupId> -->
-			<!--<artifactId>maven-war-plugin</artifactId> -->
-			<!--<version>2.3</version> -->
-			<!--<configuration> -->
-			<!--<webXml>src/main/webapp/WEB-INF/web.xml</webXml> -->
-			<!--<webappDirectory>${tomcat.location}/${project.artifactId}</webappDirectory> -->
-			<!--</configuration> -->
-			<!--</plugin> -->
 		</plugins>
 	</build>
 

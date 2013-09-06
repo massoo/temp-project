@@ -35,11 +35,9 @@ public class Login {
     @Id
     @GeneratedValue
     private long id;
-    @NotEmpty
-    @Email          //test
+    @NotEmpty        //test
     private String email;
     @NotEmpty
-    @Length(min = 6, max = 16)
     private String password;
 
     public long getId() {

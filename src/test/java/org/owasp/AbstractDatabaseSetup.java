@@ -23,41 +23,11 @@ public class AbstractDatabaseSetup {
 
     protected Logger LOG = LoggerFactory.getLogger(AbstractDatabaseSetup.class);
 
-    protected String email = "test@owasp.org";
-    protected String password = "password";
-
     @Autowired
     private DataSource dataSource;
 
     @Autowired
     private ILoginDAO loginDAO;
-
-    @Before
-    public void doBefore() {
-        Login login = new Login();
-        login.setEmail(email);
-        login.setPassword(password);
-
-        getLoginDAO().addLogin(login);
-
-        populateRandomLogins();
-    }
-
-    @After
-    public void doAfter() {
-        getLoginDAO().deleteAll();
-    }
-
-    private void populateRandomLogins() {
-        for (int x = 0; x < 5; x++) {
-            Login login = new Login();
-            login.setEmail("user" + x + "@owasp.org");
-            login.setPassword(password);
-
-            getLoginDAO().addLogin(login);
-        }
-    }
-
 
     public DataSource getDataSource() {
         return dataSource;
